@@ -5,5 +5,8 @@
   <ItemGroup>
     <PackageReference Include="Twilio" Version="7.6.0" />
   </ItemGroup>
+    <ItemGroup>
+    <ProjectReference Include="..\..\..\PII_WhatsAppApiUCU\src\Library\Library.csproj" />
+  </ItemGroup>
   
 </Project>
