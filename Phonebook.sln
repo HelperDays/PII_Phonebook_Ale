@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library", "src\Library\Libr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Program", "src\Program\Program.csproj", "{89DD610A-4116-4DD2-8781-BA9C18D0F332}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "..\PII_WhatsAppApiUCU\src\Library\Library.csproj", "{BF8381B1-B6D9-4A0F-B545-DECD2FD4183D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{89DD610A-4116-4DD2-8781-BA9C18D0F332}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89DD610A-4116-4DD2-8781-BA9C18D0F332}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89DD610A-4116-4DD2-8781-BA9C18D0F332}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF8381B1-B6D9-4A0F-B545-DECD2FD4183D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF8381B1-B6D9-4A0F-B545-DECD2FD4183D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF8381B1-B6D9-4A0F-B545-DECD2FD4183D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF8381B1-B6D9-4A0F-B545-DECD2FD4183D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
