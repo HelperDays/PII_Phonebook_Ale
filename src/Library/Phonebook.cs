@@ -1,34 +1,56 @@
 using System.Collections.Generic;
+using System.Linq;
 
-namespace Library;
-
-public class Phonebook
+namespace Library
 {
-    private List<Contact> persons;
-
-    public Phonebook(Contact owner)
+    public class Phonebook
     {
-        this.Owner = owner;
-        this.persons = new List<Contact>();
-    }
+        private List<Contact> persons;
 
-    public Contact Owner { get; }
-
-    public List<Contact> Search(string[] names)
-    {
-        List<Contact> result = new List<Contact>();
-
-        foreach (Contact person in this.persons)
+        public Phonebook()
         {
-            foreach (string name in names)
+            this.persons = new List<Contact>();
+        }
+
+        public List<Contact> Contacts => persons;
+
+        public void AddContact(Contact contact) 
+        {
+            if (contact != null && !persons.Contains(contact))
             {
-                if (person.Name.Equals(name))
-                {
-                    result.Add(person);
-                }
+                persons.Add(contact);
             }
         }
 
-        return result;
+        public void RemoveContact(Contact contact)
+        {
+            persons.Remove(contact);
+        }
+
+        public List<Contact> Search(string[] names)
+        {
+            List<Contact> result = new List<Contact>();
+            foreach (Contact person in this.persons)
+            {
+                foreach (string name in names)
+                {
+                    if (person.Name.Equals(name))
+                    {
+                        result.Add(person);
+                        break; 
+                    }
+                }
+            }
+            return result;
+        }
+
+        public void SendMessage(string[] names, IMessageChannel channel, Message message)
+        {
+            List<Contact> contactsToMessage = Search(names);
+            foreach (Contact contact in contactsToMessage)
+            {
+                channel.Send(contact, message);
+            }
+        }
     }
 }

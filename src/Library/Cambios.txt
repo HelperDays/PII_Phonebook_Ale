@@ -1,0 +1,14 @@
+﻿Cambios Echos (en general)
+
+-
+
+- En general fue aplicar principios GRASP para organizar todo de una manera eficiente(ya que estoy practicando esta manera de hacerlo)
+
+- agregue una clase nueva para que controle lo que sucede con los mensajes y contactos
+
+-
+-
+-
+-
+-
+-

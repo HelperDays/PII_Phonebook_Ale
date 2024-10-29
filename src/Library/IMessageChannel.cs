@@ -1,7 +1,8 @@
-namespace Library;
-
-// Pueden agregar operaciones a esta interfaz.
-public interface IMessageChannel
+namespace Library
 {
-        void Send(Message message);
+    public interface IMessageChannel
+    {
+        // Método para enviar un mensaje a un contacto
+        void Send(Contact contact, Message message);
+    }
 }
