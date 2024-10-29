@@ -1,6 +1,6 @@
 ﻿using System;
-using Library;
 using WhatsAppApiUCU;
+using Library;
 
 namespace Program
 {
@@ -8,17 +8,16 @@ namespace Program
     {
         static void Main(string[] args)
         {
-            // Configuración de la agenda y servicio de mensajes
-            var phonebook = new Phonebook();
+            var owner = new Contact("Ale", "+598092989394","Alehernandezprincipal@gmail.com");
+            var phonebook = new Phonebook(owner);
             var messageService = new MessageService(phonebook);
 
-            // Crear y agregar contacto
-            var contact = new Contact("Ale", "+598092989394", "alehernandezprincipal@gmail.com");
-            phonebook.AddContact(contact);
+            var contact1 = new Contact("Ale", "+598092989394", "Alehernandezprincipal@gmail.com");
+            phonebook.AddContact(contact1);
 
-            // Enviar mensaje vía WhatsApp
             var whatsappChannel = new WhatsAppChannel();
-            messageService.SendMessage( new string[] {"Ale"} , "Aguante el café!", whatsappChannel);
+            messageService.SendMessage(new string[] {contact1.Name}, "Aguante el café", whatsappChannel);
+            messageService.SendMessage(new []{owner.Name},"Aguante el cafe" ,whatsappChannel);
         }
-    }
+    }  
 }

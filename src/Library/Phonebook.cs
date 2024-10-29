@@ -7,13 +7,15 @@ namespace Library
     {
         private List<Contact> persons;
 
-        public Phonebook()
+        public Phonebook(Contact owner)
         {
+            this.Owner = owner;
             this.persons = new List<Contact>();
         }
-
+        
         public List<Contact> Contacts => persons;
-
+        public Contact Owner { get; set; }
+        
         public void AddContact(Contact contact) 
         {
             if (contact != null && !persons.Contains(contact))

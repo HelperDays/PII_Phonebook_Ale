@@ -11,22 +11,32 @@ namespace Library
             this.phonebook = phonebook;
         }
 
-        public void SendMessage(string[] contactNames, string content, IMessageChannel channel)
+        public void SendMessage(string[] names, string content, IMessageChannel channel)
         {
-            List<Contact> contacts = phonebook.Search(contactNames);
+            // Buscar los contactos según los nombres proporcionados
+            var contacts = phonebook.Search(names);
 
-            foreach (Contact contact in contacts)
+            foreach (var contact in contacts)
             {
-                if (channel is WhatsAppChannel)
+                // Validación para confirmar datos de contacto
+                if (contact.Phone == null && channel is WhatsAppChannel)
                 {
-                    string toAddress = contact.Phone;
-
-                    if (!string.IsNullOrEmpty(toAddress))
-                    {
-                        var message = new Message("WhatsApp", toAddress, content);
-                        channel.Send(contact, message);
-                    }
+                    System.Console.WriteLine($"El contacto {contact.Name} no tiene número de teléfono.");
+                    continue;
                 }
+                if (contact.Email == null && !(channel is WhatsAppChannel))
+                {
+                    System.Console.WriteLine($"El contacto {contact.Name} no tiene correo electrónico.");
+                    continue;
+                }
+
+                // Crear el mensaje
+                var message = new Message(contact.Name, contact.Phone, content);
+                
+                // Enviar el mensaje e imprimir log de depuración
+                System.Console.WriteLine($"Enviando mensaje a {contact.Name}...");
+                channel.Send(contact, message);
+                System.Console.WriteLine($"Mensaje enviado a {contact.Name} a través de {channel.GetType().Name}");
             }
         }
     }
